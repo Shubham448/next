@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 const { DataTypes } = Sequelize;
 import { sequelize } from '../connection.js';
+import { Rooms } from './rooms.js';
 
 const AssignRooms = sequelize.define('tbl_assign-rooms', {
     id: {
@@ -31,5 +32,7 @@ const AssignRooms = sequelize.define('tbl_assign-rooms', {
     charset: 'utf8mb4',
     collate: 'utf8mb4_general_ci'
 });
+
+AssignRooms.belongsTo(Rooms, { foreignKey: 'room_id' });
 
 export { AssignRooms };

@@ -13,7 +13,6 @@ import dbConfig from './config/config.js';
  const databaseLoader = async () => new Promise((resolve, reject) => {
 	sequelize.authenticate()
 		.then(async db => {
-			console.log('Database connection established');
 			resolve(db);
 		})
 		.catch(reject);

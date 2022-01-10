@@ -10,7 +10,9 @@ export const message = {
     'UNAUTHORIZED': 'Unauthorized',
     'LOGIN_SUCCESS': 'Login successful',
     'ROOM_CREATED': 'Room created',
-    'ASSIGN_ROOM_CREATED': 'Rooms assign successful'
+    'ASSIGN_ROOM_CREATED': 'Rooms assign successful',
+    'TRAINER_ALREADY_EXIST': 'Trainer already exist in room',
+    'NOT_IN_ROOM': 'You are not in room'
 }
 
 export const code = {

@@ -14,7 +14,6 @@ const upload = multer({
 
 const apiRoute = nextConnect({
     onError: (err, req, res, next) => {
-        console.error(err);
         res.status(500).end("Something broke!");
     },
     onNoMatch: (req, res, next) => {

@@ -3,7 +3,6 @@ import passport from "passport";
 
 const apiRoute = nextConnect({
     onError: (err, req, res, next) => {
-        console.error(err);
         res.status(500).end("Something broke!");
     },
     onNoMatch: (req, res, next) => {
@@ -12,9 +11,6 @@ const apiRoute = nextConnect({
 })
 .get(async(req, res) => {
     passport.authenticate('google', {}, (token, info, refreshToken) => {
-        console.log('token', token);
-        console.log('info', info);
-        console.log('refresh', refreshToken)
         if (token) {
             req.data = token;
             req.status = 200;

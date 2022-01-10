@@ -9,9 +9,6 @@ export const passportLogin = () => {
         callbackURL: "http://localhost:3000/api/auth/google/callback"
     },
         async function (accessToken, refreshToken, profile, cb) {
-            console.log(accessToken)
-            console.log(refreshToken)
-            console.log(profile)
             let trainerRecord = await Trainers.findOne({
                 where: {
                     social_id: profile.id

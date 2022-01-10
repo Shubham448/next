@@ -4,7 +4,7 @@ const { DB_HOST, DB_USER, DB_NAME, DB_PASSWORD } = process.env;
 
 const dbConfig ={
   "username": DB_USER,
-  "password": DB_PASSWORD,
+  "password": null,
   "database": DB_NAME,
   "host": DB_HOST,
   "dialect": 'mysql'

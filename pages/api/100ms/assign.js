@@ -4,6 +4,8 @@ import { AssignRooms } from '../../../db/models/assign-rooms';
 import validate from "../../../middleware/validations";
 import { code, makeResponse, message } from '../../../utils/common/response';
 import authUser from '../../../middleware/auth';
+import Sequelize from "sequelize";
+const { Op } = Sequelize;
 
 const handler = async (req, res) => {
     const { method, body } = req;
@@ -11,6 +13,15 @@ const handler = async (req, res) => {
         case 'POST':
             try {
                 await authUser(req, res);
+                let assignRoomRecord = await AssignRooms.findOne({
+                    where : {
+                        [Op.and]: [
+                            { trainer_id: req.body.trainer_id },
+                            { room_id: req.body.room_id }
+                        ]
+                    }
+                });
+                if (assignRoomRecord) return makeResponse(res, code.RECORD_ALREADY_EXISTS, false, message.TRAINER_ALREADY_EXIST);
                 let newAssignRoom = await AssignRooms.create(body);
                 return makeResponse(res, code.RECORD_CREATED, true, message.ASSIGN_ROOM_CREATED, newAssignRoom);
             } catch (error) {

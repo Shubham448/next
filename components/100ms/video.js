@@ -8,6 +8,7 @@ import {
 export function VideoTile({peer}) {
     const videoRef = useRef(null);
     const hmsActions = useHMSActions();
+    
     // get the camera track to render
     const videoTrack = useHMSStore(selectCameraStreamByPeerID(peer.id));
     useEffect(() => {
@@ -21,4 +22,4 @@ export function VideoTile({peer}) {
     }, [videoTrack, hmsActions]);
   
     return <video ref={videoRef} autoPlay muted playsInline></video>;
-}
+};

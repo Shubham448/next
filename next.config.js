@@ -1,4 +1,3 @@
-console.log(process.env.DB_HOST)
 require('dotenv').config();
 const webpack = require('webpack');
 const bodyParser = require('body-parser');

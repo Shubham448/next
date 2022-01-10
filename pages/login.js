@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { useState } from "react";
 import axios from "axios";
 import ToggleNotification from "../components/ToogleNotification/ToogleNotification";
-import {NotificationContainer} from 'react-notifications';
 import { useRouter } from 'next/router';
 
 export default function Login() {
@@ -18,7 +17,6 @@ export default function Login() {
     const submitHandler = async (values) => {
         try {
             let res = await axios.post(`/api/auth/login`, values);
-            // console.log(res.data.me);
             localStorage.setItem('token', res.data.meta.accessToken);
             localStorage.setItem('refresh-token', res.data.meta.refreshToken);
             ToggleNotification("Success Login", res.data.message);
@@ -27,7 +25,6 @@ export default function Login() {
             }, 2000);
         }
         catch (error) {
-            console.log('e', error?.response?.data?.message);
             ToggleNotification("Error", error?.response?.data?.message);
         }
     };
@@ -46,7 +43,6 @@ export default function Login() {
 
     return (
         <>
-        <NotificationContainer />
             <div className={`${styles.outline}`}>
                 <Form className={`${styles.loginForm}`} onSubmit={formik.handleSubmit}>
                     <FormGroup>
